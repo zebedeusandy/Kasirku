@@ -1,0 +1,150 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #f7f4ec;
+  --foreground: #17241d;
+  --card: #ffffff;
+  --card-foreground: #17241d;
+  --popover: #ffffff;
+  --popover-foreground: #17241d;
+  --primary: #0e6b4e;
+  --primary-foreground: #f4fff9;
+  --secondary: #ece7da;
+  --secondary-foreground: #26352c;
+  --muted: #f0ece1;
+  --muted-foreground: #5f6e64;
+  --accent: #f2a93c;
+  --accent-foreground: #2c1e05;
+  --destructive: #c04a2e;
+  --destructive-foreground: #fff6f2;
+  --border: #e4decf;
+  --input: #dcd5c3;
+  --ring: #0e6b4e;
+  --radius: 0.625rem;
+
+  --forest: #10231b;
+  --forest-soft: #173026;
+  --gold: #f2a93c;
+  --gold-deep: #d9901f;
+  --mint: #12a67a;
+  --cream: #f4f1e8;
+}
+
+.dark {
+  --background: #101a15;
+  --foreground: #ecf3ee;
+  --card: #16221c;
+  --card-foreground: #ecf3ee;
+  --popover: #16221c;
+  --popover-foreground: #ecf3ee;
+  --primary: #16a37b;
+  --primary-foreground: #04150e;
+  --secondary: #203028;
+  --secondary-foreground: #dcebe3;
+  --muted: #1d2b24;
+  --muted-foreground: #93a79b;
+  --accent: #f2a93c;
+  --accent-foreground: #2c1e05;
+  --destructive: #d85f41;
+  --destructive-foreground: #fff6f2;
+  --border: #26362e;
+  --input: #2c3f35;
+  --ring: #16a37b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-forest: var(--forest);
+  --color-forest-soft: var(--forest-soft);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-mint: var(--mint);
+  --color-cream: var(--cream);
+
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono:
+    ui-monospace, "SFMono-Regular", "JetBrains Mono", Menlo, Consolas,
+    monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background-color: color-mix(in srgb, var(--primary) 25%, transparent);
+  }
+}
+
+/* Receipt / money helpers */
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+.receipt-paper {
+  font-family: var(--font-mono);
+  background-image:
+    linear-gradient(#ffffff, #ffffff),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 22px,
+      rgba(23, 36, 29, 0.045) 22px 23px
+    );
+}
+
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  #print-area,
+  #print-area * {
+    visibility: visible !important;
+  }
+  #print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 76mm;
+    padding: 0;
+    border: none !important;
+    box-shadow: none !important;
+  }
+}
